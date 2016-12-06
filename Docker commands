@@ -1,0 +1,31 @@
+#######################
+### Docker commands ###
+#######################
+
+------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+
+docker info           - docker information
+docker images         - list of images
+docker ps             - list of running containers
+docker ps -a          - list of all containers running for docker histary
+docker stop {ID}      - stop running container
+docker rm             - remove container
+docker rmi {ID}       - remove created image
+
+------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+#######################################################
+### Lets play                                       ###
+### Lets build container with angular 2 application ###
+### with server side rendering running in nodejs    ###
+#######################################################
+------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+
+# Docker nodejs
+docker build -t alejandro/angular2universal . - Create image of our application
+docker run -p 49160:3000 -d alejandro/angular2universal
+
+# Docker apache
+docker build -t alejandro/apache .
+docker run -p 49160:80 -d alejandro/apache
+
+docker exec -it {ID} bash - enter container

@@ -1,0 +1,28 @@
+######################################
+### Dockerfile for our application ###
+######################################
+
+# Gets images from docker repo more nodejs avalaible here https://hub.docker.com/_/node/
+FROM node:boron
+
+# Create directory in our container
+RUN mkdir -p /usr/src/app
+
+# Make directory working directory
+WORKDIR /usr/src/app
+
+# Copy all files of project to image
+COPY ./universal-starter/ /usr/src/app
+
+# Installing modules
+RUN npm install
+
+# Exposing port 3000 from image
+EXPOSE 3000
+
+# Runs application using npm start command
+CMD [ "npm", "start" ]
+
+####################
+### We are ready ###
+####################

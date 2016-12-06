@@ -1,0 +1,16 @@
+######################################
+### Dockerfile for apache application ###
+######################################
+
+# Gets images from docker repo more nodejs avalaible here https://hub.docker.com/_/node/
+FROM httpd:2.4
+
+# Copy all files of project to image
+COPY ./simple-app/ /usr/local/apache2/htdocs/
+
+# Exposing port 80 from image
+EXPOSE 80
+
+####################
+### We are ready ###
+####################
