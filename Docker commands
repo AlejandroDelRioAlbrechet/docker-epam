@@ -29,3 +29,29 @@ docker build -t alejandro/apache .
 docker run -p 49160:80 -d alejandro/apache
 
 docker exec -it {ID} bash - enter container
+
+################
+### Advanced ###
+################
+------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+Orders Api via command line
+Lets Run MongoDB
+docker pull mongo                                  - download image from dockerhub
+docker run --name ordersdb -p 27017:27017 -d mongo - run docker container from docker image
+
+Or Simply run it via kitematic
+
+Lets create image of .net application
+docker build -t alejandro/net .                                     - builds an image of our .net application
+docker images                                                       - to check if images created
+docker run --name ordersapi -p 49160:8080 -d alejandro/net - runs container
+------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+Lets use our api
+curl -H "Content-Type: application/json" --data '{"FirstName": "Alejandro", "LastName": "Del Rio", "Address": {"Street1": "123 asdasczxqw St", "City": "New York", "State": "qwerty", "Zip": "7900"}, "ItemId": "21a0276a-ff97-4d5a-828b-ae13024f4aec", "Quantity": 5}' http://localhost:49160/api/order
+http://localhost:49160/api/order/{_id which was output in console}
+
+###############
+### Compose ###
+###############
+docker-compose up - run triky architecture
+docker-compose up - run triky architecture in detached mode
